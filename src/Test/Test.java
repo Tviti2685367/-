@@ -2,6 +2,8 @@ import java.util.Scanner;
 
 public class Test {
     public static void main(String[] args) {
+        HeartRateCalculator heartRateCalculator = HeartRateCalculator.getInstance(); // Отримуємо екземпляр класу
+
         try (Scanner scanner = new Scanner(System.in)) { // Використовуємо try-with-resources
             System.out.println("Enter body temperature:");
             double bodyTemperature = scanner.nextDouble();
@@ -9,7 +11,7 @@ public class Test {
             System.out.println("Enter physiological norm temperature:");
             double physiologicalNormTemperature = scanner.nextDouble();
 
-            double heartRate = FrequencyCalculator.calculateHeartRate(bodyTemperature, physiologicalNormTemperature);
+            double heartRate = heartRateCalculator.calculateHeartRate(bodyTemperature, physiologicalNormTemperature); // Викликаємо метод через екземпляр класу
             System.out.println("Heart rate: " + heartRate + " beats per minute");
             
             System.out.println("Enter display option (1 - Text table, 2 - HTML table):");
